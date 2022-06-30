@@ -18,7 +18,7 @@
             cache:false,
             timeout:    1000000,
             success: function (data) {
-                document.getElementById('main').innerHTML = `${data.name}<img src="image/${data.image}">`
+                document.getElementById('main').innerHTML = `${data.name}<img src="/image/${data.image}">`
             }
         })
     }
@@ -28,7 +28,7 @@
 <div id ="main"></div>
 <form enctype="multipart/form-data" id="form">
 <input type="text"name="name">
-<input type="text"name="file"/>
+<input type="file"name="file"/>
 <button type="button" onclick="submitForm()">Upload</button>
 </form>
 </body>

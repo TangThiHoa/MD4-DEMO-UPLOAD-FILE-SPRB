@@ -19,7 +19,7 @@ public class SpringFileUploadController {
         String fileName = file.getOriginalFilename();
         post.setImage(fileName);
         try {
-            file.transferTo(new File("C:\\Users\\AE\\Pictures\\C0222H1" + fileName));
+            file.transferTo(new File("D:\\Modul4\\UploadFile_SpringBoot\\image\\" + fileName));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

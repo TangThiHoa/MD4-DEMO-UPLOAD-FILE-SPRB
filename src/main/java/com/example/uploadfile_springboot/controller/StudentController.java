@@ -1,5 +1,6 @@
 package com.example.uploadfile_springboot.controller;
 
+import com.example.uploadfile_springboot.model.Image;
 import com.example.uploadfile_springboot.model.Student;
 import com.example.uploadfile_springboot.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,19 +39,18 @@ public class StudentController {
         return new ResponseEntity<>(studentService.findById(id).get(), HttpStatus.OK);
     }
 
-//    @PostMapping("/upload")
-//    public ResponseEntity upload(MultipartFile file) {
-//        String fileName = file.getOriginalFilename();
-//        try {
-//            FileCopyUtils.copy(file.getBytes(),
-//                    new File("/Users/daonhuanh/Desktop/Codegym/Module1/demoAjax/image/" + fileName));
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-//        Image image = new Image(fileName, fileName);
-//        Image image = new Image();
-//        return new ResponseEntity<>(image, HttpStatus.OK);
-//    }
+    @PostMapping("/upload")
+    public ResponseEntity upload(MultipartFile file) {
+        String fileName = file.getOriginalFilename();
+        try {
+            FileCopyUtils.copy(file.getBytes(),
+                    new File("/Users/daonhuanh/Desktop/Codegym/Module1/demoAjax/image/" + fileName));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Image image = new Image(fileName,fileName);
+        return new ResponseEntity<>(image, HttpStatus.OK);
+    }
 
     @GetMapping("/clazz")
     public ResponseEntity findByCategoryId(@RequestParam Long id) {
